@@ -11,7 +11,7 @@ import (
 	"github.com/SeaRoll/mini-auth/internal/config"
 	"github.com/SeaRoll/mini-auth/internal/db"
 )
-	
+
 func main() {
 	config := config.NewConfig("config.yml")
 	dbo := db.NewService()

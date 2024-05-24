@@ -15,7 +15,7 @@ type Server interface {
 
 type server struct {
 	config config.Config
-	e *echo.Echo
+	e      *echo.Echo
 }
 
 func NewServer(config config.Config) Server {
@@ -24,13 +24,13 @@ func NewServer(config config.Config) Server {
 
 	return &server{
 		config: config,
-		e: e,
+		e:      e,
 	}
 }
 
 func (s *server) Run(ctx context.Context, stop chan bool) {
 	go func() {
-		if err := s.e.Start(":"+s.config.Port); err != nil && err != http.ErrServerClosed {
+		if err := s.e.Start(":" + s.config.Port); err != nil && err != http.ErrServerClosed {
 			s.e.Logger.Fatal("shutting down the server")
 		}
 	}()
